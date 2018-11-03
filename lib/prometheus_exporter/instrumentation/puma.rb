@@ -12,7 +12,7 @@ module PrometheusExporter::Instrumentation
             metric = puma_collector.collect
             client.send_json metric
           rescue => e
-            STDERR.puts("Prometheus Exporter Failed To Collect Puma Stats #{e}")
+            STDERR.puts("Prometheus Exporter Failed To Collect Puma Stats #{e}\n#{e.backtrace}")
           ensure
             sleep frequency
           end
